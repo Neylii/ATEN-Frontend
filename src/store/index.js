@@ -8,14 +8,25 @@ export default createStore({
     allProducts: [],
   },
   //Sync methods, called with this.$store.commit("methodName", Object);
+  //OBS: Always use mutation to update state!
   mutations: {
+    /**
+     * Updates the state allProducts
+     * @param {*} state the state
+     * @param {*} listOfProducts the list of products
+     */
     setAllProducts(state, listOfProducts) {
       state.allProducts = listOfProducts;
     },
   },
   //Async methods this.$store.dispatch("methodName", Object);
   actions: {
-    //--------------------------------------------------------------------------
+    /**
+     * Method for calling the API
+     * @param {*} state the state
+     * @param {*} urlApi the url param to the api
+     * @returns the response from the API call
+     */
     async apiCall(state, urlApi) {
       let json = null;
 
@@ -33,7 +44,9 @@ export default createStore({
 
       return json;
     },
-    //--------------------------------------------------------------------------
+    /**
+     * Gets all the products
+     */
     async getAllProducts() {
       let json = await this.dispatch("apiCall", "products");
       this.commit("setAllProducts", json);
