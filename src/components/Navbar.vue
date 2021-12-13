@@ -4,6 +4,7 @@
       <li><a href="#">Hem</a></li>
       <li><a href="#Products">Produkter</a></li>
       <li><a href="#About">Om oss</a></li>
+      <li><a href="#CreateAccount">Skapa konto</a></li>
     </ul>
   </div>
 </template>
