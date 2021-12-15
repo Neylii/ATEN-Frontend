@@ -1,0 +1,35 @@
+@use "~bootstrap/scss/bootstrap" with (
+  $primary: rgb(1, 1, 1)
+);
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-template-areas:
+    "hd hd hd hd   hd   hd   hd   hd   hd"
+    "sd sd main main main main main main main"
+    "ft ft ft ft   ft   ft   ft   ft   ft";
+}
+
+.header {
+  grid-area: hd;
+}
+.footer {
+  grid-area: ft;
+}
+.content {
+  grid-area: main;
+}
+.sidebar {
+  grid-area: sd;
+}
+
+.card {
+  margin-bottom: 2em;
+  margin: 1em;
+}
+
+.carousel-inner {
+  margin: 0 auto;
+}
