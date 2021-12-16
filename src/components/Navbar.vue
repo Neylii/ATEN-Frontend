@@ -12,7 +12,7 @@
   <nav class="navbar navbar-expand-md navbar-white bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="/src/assets/images/ATEN.png" alt="" width="30" height="24" />
+        <img src="../assets/images/ATEN.png" alt="" width="30" height="24" />
       </a>
       <button
         class="navbar-toggler"
@@ -33,11 +33,11 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Produkter</a>
+            <a class="nav-link" href="#Products">Produkter</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#">Om oss</a>
+            <a class="nav-link" href="#About">Om oss</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -66,21 +66,23 @@
           /></svg
         >View Cart
       </button>
-      <button class="btn btn-light mx-1">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          class="bi bi-person-fill"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-          />
-        </svg>
-        Mitt konto
-      </button>
+      <a href="#CreateAccount">
+        <button class="btn btn-light mx-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-person-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+            />
+          </svg>
+          Mitt konto
+        </button>
+      </a>
     </div>
   </nav>
 </template>
