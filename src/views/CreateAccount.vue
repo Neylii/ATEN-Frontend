@@ -1,17 +1,17 @@
 <template>
   <div class="register">
+    <TopTitle msg="Skapa ett konto" />
     <fieldset>
-      <legend><h2>Skapa konto:</h2></legend>
       <form class="form" v-on:submit.prevent="submitForm">
         <FormInput
-          labelText="Användarnamn  "
+          labelText="Användarnamn"
           id="username"
           placeholder="Användarnamn"
           v-model="form.username"
           :requiredBool="true"
         ></FormInput>
         <FormInput
-          labelText="Lösenord  "
+          labelText="Lösenord"
           type="password"
           id="password"
           placeholder="Välj nått bra"
@@ -20,21 +20,21 @@
         ></FormInput
         ><br />
         <FormInput
-          labelText="Förnamn  "
+          labelText="Förnamn"
           id="firstName"
-          placeholder="Ditt förnamn"
+          placeholder="Ditt tilltalsnamn"
           v-model="form.firstName"
           :requiredBool="true"
         ></FormInput>
         <FormInput
-          labelText="Efternamn  "
+          labelText="Efternamn"
           id="lastName"
           placeholder="Ditt efternamn"
           v-model="form.lastName"
           :requiredBool="true"
         ></FormInput>
         <FormInput
-          labelText="Telefonnummer  "
+          labelText="Telefonnummer"
           id="phoneNumber"
           placeholder="Telefonnummer"
           v-model="form.userAddresses[0].phoneNumber"
@@ -42,36 +42,44 @@
         ></FormInput
         ><br />
         <FormInput
-          labelText="Adress  "
+          labelText="Adress"
           id="address"
           placeholder="Gatuadress"
           v-model="form.userAddresses[0].address"
           :requiredBool="false"
         ></FormInput>
         <FormInput
-          labelText="Postnummer  "
+          labelText="Postnummer"
           id="zipcode"
           placeholder="Postnr"
           v-model="form.userAddresses[0].zipcode"
           :requiredBool="false"
         ></FormInput>
         <FormInput
-          labelText="Stad  "
+          labelText="Stad"
           id="city"
           placeholder="Stad"
           v-model="form.userAddresses[0].city"
           :requiredBool="false"
         ></FormInput>
         <FormInput
-          labelText="Land  "
+          labelText="Land"
           id="country"
           placeholder="Land"
           v-model="form.userAddresses[0].country"
           :requiredBool="false"
         ></FormInput>
         <div class="form-group-btn">
-          <button type="submit"><b>Skapa konto</b></button>
-          <button type="reset"><b>Rensa formuläret</b></button>
+          <button type="submit" class="btn btn-outline-dark mx-1">
+            <b>Skapa konto</b>
+          </button>
+          <button
+            type="reset"
+            class="btn btn-outline-dark mx-1"
+            onclick="return confirm('Säker på att du vill rensa?')"
+          >
+            <b>Rensa formulär</b>
+          </button>
         </div>
       </form>
     </fieldset>
@@ -84,10 +92,14 @@ import router from "../router";
 import * as consts from "../assets/const.js";
 import FormInput from "../components/FormInput";
 import { ref } from "vue";
+import TopTitle from "../components/TopTitle";
 
 export default {
   name: "CreateAccount",
-  components: { FormInput },
+  components: {
+    FormInput,
+    TopTitle,
+  },
   data() {
     return {
       labelText: ref(""),
@@ -138,7 +150,6 @@ export default {
           router.push("Home");
         });
     },
-
     async submit() {
       await this.$store.dispatch("apiCall", "/user/new");
     },
@@ -147,15 +158,23 @@ export default {
 </script>
 <style scoped>
 .register {
-  margin: 30em;
+  margin: 25em;
 }
 
 .form {
-  margin-top: 0.5em;
+  display: grid;
+  margin-top: 0.2em;
   margin-bottom: 0.5em;
+  border: #53787f solid 0.2em;
+  padding: 1em;
 }
 
 .form-group-btn {
   margin-top: 0.3em;
+  border-radius: 1.5em;
+}
+
+.reset-btn {
+  margin-top: -10%;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <label :for="id">{{ labelText }} </label>
+    <label class="label" :for="id">{{ labelText }} </label>
     <input
       :type="type"
       :id="id"
@@ -58,12 +58,28 @@ export default {
 </script>
 
 <style scoped>
-/*Just to see what it changes*/
 .form-group {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 0.3fr;
   font-weight: bold;
+  text-align: right;
+  margin-bottom: 0.3em;
+}
+
+.label {
+  margin-right: 0.5em;
+  margin-top: 0.2em;
+  font-size: larger;
+}
+
+.form-control {
+  text-align: match-parent;
 }
 
 .req {
+  margin-left: 0.2em;
+  text-align: left;
   color: red;
+  font-size: x-large;
 }
 </style>
