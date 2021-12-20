@@ -1,14 +1,17 @@
 <template>
   <Navbar></Navbar>
   <router-view id="router-view" />
+  <login />
 </template>
 
 <script>
+import Login from "./components/Login.vue";
 import Navbar from "./components/Navbar.vue";
 
 export default {
   components: {
     Navbar,
+    Login,
   },
   mounted() {
     this.$store.dispatch("getAllProducts");
@@ -16,6 +19,7 @@ export default {
 };
 </script>
 <style>
+@import "./assets/style/cssConsts.css";
 * {
   margin: 0;
   padding: 0;

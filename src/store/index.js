@@ -6,6 +6,7 @@ export default createStore({
   state: {
     errorMessage: String,
     allProducts: [],
+    showLogin: false,
   },
   //Sync methods, called with this.$store.commit("methodName", Object);
   //OBS: Always use mutation to update state!
@@ -17,6 +18,9 @@ export default createStore({
      */
     setAllProducts(state, listOfProducts) {
       state.allProducts = listOfProducts;
+    },
+    changeLoginScreen(state, value) {
+      state.showLogin = value;
     },
   },
   //Async methods this.$store.dispatch("methodName", Object);
