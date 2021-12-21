@@ -159,7 +159,7 @@
     <div class="content container-fluid" style="">
       <!--Carousel-->
       <Carousel />
-      <div class="row">
+      <div class="row justify-content-between" style="margin: 1em">
         <!--Cards row 1-->
         <Product-card
           v-for="product in $store.state.allProducts"
