@@ -1,7 +1,7 @@
 <template>
   <div class="card" style="width: 15rem">
     <img
-      :src="`../../src/assets/images/${productName}.png`"
+      src="../../src/assets/images/Rocketleague.jpg"
       class="card-img-top"
       alt="..."
     />
