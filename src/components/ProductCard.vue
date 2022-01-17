@@ -1,10 +1,6 @@
 <template>
   <div class="card" style="width: 15rem">
-    <img
-      src="../../src/assets/images/Rocketleague.jpg"
-      class="card-img-top"
-      alt="..."
-    />
+    <img :src="productName + '.png'" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{ productName }}</h5>
       <p class="card-text">
