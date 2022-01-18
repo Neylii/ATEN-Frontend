@@ -66,7 +66,26 @@
           /></svg
         >View Cart
       </button>
-      <button class="btn btn-light mx-1" @click="handleLoginClick">
+
+      <div class="logged-in-user-container" v-if="$store.state.loginStatus">
+        <p>{{ $store.state.user.username }}</p>
+        <button class="btn btn-light mx-1" @click="handleLogoutClick">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-person-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+            />
+          </svg>
+          Logga ut
+        </button>
+      </div>
+      <button class="btn btn-light mx-1" @click="handleLoginClick" v-else>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -97,6 +116,9 @@ export default {
     handleLoginClick() {
       this.$store.commit("changeLoginScreen", true);
     },
+    handleLogoutClick() {
+      this.$store.commit("changeLoginStatus", false);
+    },
   },
 };
 </script>
@@ -124,6 +146,18 @@ a {
   font-size: 18px;
   color: white;
   text-decoration: none;
+}
+
+p {
+  font-size: 18px;
+  color: white;
+  padding: 0 1em 0;
+  margin: 0;
+}
+
+.logged-in-user-container {
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (min-width: 360px) {

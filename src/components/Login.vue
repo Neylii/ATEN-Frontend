@@ -43,7 +43,9 @@
             <button class="btn" @click="handleCreateAccountClick">
               Create Account
             </button>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn" @click="handleLogin()">
+              Login
+            </button>
           </div>
         </form>
       </div>
@@ -52,6 +54,9 @@
 </template>
 
 <script>
+import * as jsFile from "../assets/1.js";
+import * as consts from "../assets/const.js";
+
 //--------------------------------------------------------------------------
 export default {
   name: "Login",
@@ -80,6 +85,26 @@ export default {
     //--------------------------------------------------------------------------
     handleSubmit() {
       this.$store.commit("changeLoginScreen", false);
+    },
+    async handleLogin() {
+      let json = await this.$store.dispatch(
+        "apiCall",
+        `loginRequest/${this.formData.username}&${this.getmd5Password()}`
+      );
+
+      if (json) {
+        let user = {
+          username: json.username,
+        };
+
+        this.$store.commit("updateUserInfo", user);
+        this.$store.commit("changeLoginStatus", true);
+      }
+
+      console.log(json);
+    },
+    getmd5Password() {
+      return jsFile.createMd5(this.formData.password + consts.keys.key);
     },
   },
   //--------------------------------------------------------------------------

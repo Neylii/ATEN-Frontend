@@ -93,6 +93,7 @@ import * as consts from "../assets/const.js";
 import FormInput from "../components/FormInput";
 import { ref } from "vue";
 import TopTitle from "../components/TopTitle";
+import * as jsFile from "../assets/1.js";
 
 export default {
   name: "CreateAccount",
@@ -122,6 +123,10 @@ export default {
   },
   methods: {
     submitForm() {
+      this.form.password = jsFile.createMd5(
+        this.form.password + consts.keys.key
+      );
+
       axios
         .post(consts.urls.urlHost + "user/new", this.form)
         .then((res) => {

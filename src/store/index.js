@@ -7,6 +7,11 @@ export default createStore({
     errorMessage: String,
     allProducts: [],
     showLogin: false,
+    loginStatus: false,
+    user: {
+      username: String,
+      level: String,
+    },
   },
   //Sync methods, called with this.$store.commit("methodName", Object);
   //OBS: Always use mutation to update state!
@@ -21,6 +26,13 @@ export default createStore({
     },
     changeLoginScreen(state, value) {
       state.showLogin = value;
+    },
+    changeLoginStatus(state, value) {
+      state.loginStatus = value;
+    },
+    updateUserInfo(state, user) {
+      state.user.username = user.username;
+      state.user.level = user.level;
     },
   },
   //Async methods this.$store.dispatch("methodName", Object);
