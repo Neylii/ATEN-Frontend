@@ -6,6 +6,7 @@
       <p class="card-text">
         {{ description }}
       </p>
+      <p class="card-text">{{ price }} SEK</p>
       <a class="btn btn-primary">Buy</a>
     </div>
   </div>
@@ -16,6 +17,7 @@ export default {
   props: {
     productName: String,
     description: String,
+    price: Number,
   },
 };
 </script>
