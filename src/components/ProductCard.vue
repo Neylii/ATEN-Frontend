@@ -6,6 +6,8 @@
       <p class="card-text">
         {{ description }}
       </p>
+
+      <p class="card-text">{{ price }} SEK</p>
       <a
         class="btn btn-primary"
         @click="$store.commit('addProductToCart', product)"
@@ -21,6 +23,7 @@ export default {
     product: Object,
     productName: String,
     description: String,
+    price: Number,
   },
 };
 </script>
