@@ -231,8 +231,8 @@
           :key="product.productId"
           :productName="product.name"
           :description="product.description"
-          :price="product.price"
-        >
+          :product="product"
+          :price="product.price">
           {{ product }}
         </Product-card>
       </div>
