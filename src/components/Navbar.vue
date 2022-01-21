@@ -52,20 +52,8 @@
           </button>
         </form>
       </div>
-      <button class="btn btn-light mx-1">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="25"
-          height="25"
-          fill="currentColor"
-          class="bi bi-cart"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-          /></svg
-        >View Cart
-      </button>
+
+      <CartDropdown />
 
       <div class="logged-in-user-container" v-if="$store.state.loginStatus">
         <p>{{ $store.state.user.username }}</p>
@@ -105,12 +93,15 @@
 </template>
 
 <script>
+import CartDropdown from "../components/CartDropdown.vue";
 /**
  * Navigationbar component. On bigger screens the bar is in a fixed position at the top.
  * Changes style and position to fixed at the bottom when the screen is smaller.
  */
 export default {
-  components: {},
+  components: {
+    CartDropdown,
+  },
   name: "Navbar",
   methods: {
     handleLoginClick() {

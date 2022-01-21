@@ -6,7 +6,11 @@
       <p class="card-text">
         {{ description }}
       </p>
-      <a class="btn btn-primary">Buy</a>
+      <a
+        class="btn btn-primary"
+        @click="$store.commit('addProductToCart', product)"
+        >Buy</a
+      >
     </div>
   </div>
 </template>
@@ -14,6 +18,7 @@
 <script>
 export default {
   props: {
+    product: Object,
     productName: String,
     description: String,
   },

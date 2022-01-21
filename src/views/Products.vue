@@ -166,6 +166,7 @@
           :key="product.productId"
           :productName="product.name"
           :description="product.description"
+          :product="product"
         >
           {{ product }}
         </Product-card>
