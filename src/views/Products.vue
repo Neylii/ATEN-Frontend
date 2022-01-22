@@ -232,7 +232,8 @@
           :productName="product.name"
           :description="product.description"
           :product="product"
-          :price="product.price">
+          :price="product.price"
+        >
           {{ product }}
         </Product-card>
       </div>
