@@ -21,7 +21,8 @@
         :key="itemInCart.product.productId"
         >{{ itemInCart.product.name + itemInCart.quantity }}</a
       >
-      <a href="#Checkout" @Click="handleCheckoutClick()">Till kassan</a>
+      <a v-if="this.$store.state.productsInCart < 1">Kundvagnen är tom</a>
+      <a href="#Checkout" @Click="handleCheckoutClick()" v-else>Till kassan</a>
     </div>
   </div>
 </template>
