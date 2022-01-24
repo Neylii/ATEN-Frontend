@@ -75,7 +75,6 @@ export default {
   methods: {
     //--------------------------------------------------------------------------
     handleClick() {
-      console.log(window);
       this.$store.commit("changeLoginScreen", false);
     },
     handleCreateAccountClick() {
@@ -99,9 +98,10 @@ export default {
 
         this.$store.commit("updateUserInfo", user);
         this.$store.commit("changeLoginStatus", true);
+        if (this.formData.autoLogin) {
+          this.$store.commit("setUsernameToCookie", user.username);
+        }
       }
-
-      console.log(json);
     },
     getmd5Password() {
       return jsFile.createMd5(this.formData.password + consts.keys.key);

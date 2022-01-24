@@ -94,6 +94,7 @@
 
 <script>
 import CartDropdown from "../components/CartDropdown.vue";
+import * as utils from "../assets/utils.js";
 /**
  * Navigationbar component. On bigger screens the bar is in a fixed position at the top.
  * Changes style and position to fixed at the bottom when the screen is smaller.
@@ -108,6 +109,7 @@ export default {
       this.$store.commit("changeLoginScreen", true);
     },
     handleLogoutClick() {
+      utils.deleteCookie("username");
       this.$store.commit("changeLoginStatus", false);
     },
   },

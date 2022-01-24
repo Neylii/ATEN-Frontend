@@ -14,6 +14,7 @@ export default {
     Login,
   },
   mounted() {
+    this.$store.commit("updateUsernameFromCookie");
     this.$store.dispatch("getAllProducts");
   },
 };

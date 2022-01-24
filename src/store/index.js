@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 // för att importera separata js filer
 import * as consts from "../assets/const.js";
+import * as utils from "../assets/utils.js";
 
 export default createStore({
   state: {
@@ -35,7 +36,6 @@ export default createStore({
     },
     updateUserInfo(state, user) {
       state.user.username = user.username;
-      state.user.level = user.level;
     },
     addProductToCart(state, product) {
       state.productsInCart.push(product);
@@ -55,6 +55,18 @@ export default createStore({
       } else {
         state.cartWithQuantity.push({ product: product, quantity: 1 });
       }
+    },
+    //--------------------------------------------------------------------------
+    updateUsernameFromCookie(state) {
+      state.user.username = utils.getCookie("username");
+      if (state.user.username) {
+        this.commit("changeLoginStatus", true);
+      }
+    },
+    //--------------------------------------------------------------------------
+    setUsernameToCookie(state, value) {
+      utils.setCookie("username", value, 30);
+      this.commit("updateUsernameFromCookie");
     },
   },
   //Async methods this.$store.dispatch("methodName", Object);
@@ -93,7 +105,6 @@ export default createStore({
     async checkoutApiCall({ state }, urlApi) {
       let json = null;
       let apiUrl = consts.urls.urlHost + urlApi;
-      console.log(state.productsInCart);
 
       try {
         let response = await fetch(apiUrl, {
