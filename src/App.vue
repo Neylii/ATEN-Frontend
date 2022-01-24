@@ -1,17 +1,20 @@
 <template>
   <Navbar></Navbar>
   <router-view id="router-view" />
+  <Footer />
   <login />
 </template>
 
 <script>
 import Login from "./components/Login.vue";
 import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   components: {
     Navbar,
     Login,
+    Footer,
   },
   mounted() {
     this.$store.commit("updateUsernameFromCookie");

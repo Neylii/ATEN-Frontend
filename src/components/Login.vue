@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="button-container">
-            <div class="remember-me-container">
+            <div class="remember-me-container" v-if="$store.state.allowCookies">
               <label for="autoLogin">Remember me</label>
               <input type="checkbox" v-model="formData.autoLogin" />
             </div>

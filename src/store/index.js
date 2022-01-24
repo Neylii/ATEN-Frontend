@@ -9,6 +9,8 @@ export default createStore({
     allProducts: [],
     showLogin: false,
     loginStatus: false,
+    showCookieConsent: true,
+    allowCookies: false,
     user: {
       userId: Number,
       username: String,
@@ -33,6 +35,12 @@ export default createStore({
     },
     changeLoginStatus(state, value) {
       state.loginStatus = value;
+    },
+    changeAllowCookies(state, value) {
+      state.allowCookies = value;
+    },
+    updateShowCookieConsent(state, value) {
+      state.showCookieConsent = value;
     },
     updateUserInfo(state, user) {
       state.user.username = user.username;
@@ -65,8 +73,10 @@ export default createStore({
     },
     //--------------------------------------------------------------------------
     setUsernameToCookie(state, value) {
-      utils.setCookie("username", value, 30);
-      this.commit("updateUsernameFromCookie");
+      if (state.allowCookies) {
+        utils.setCookie("username", value, 30);
+        this.commit("updateUsernameFromCookie");
+      }
     },
   },
   //Async methods this.$store.dispatch("methodName", Object);
