@@ -11,27 +11,49 @@
       >
         <path
           d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-        /></svg
-      >View Cart
+        />
+      </svg>
+      &nbsp;{{ numberOfItemsInCart }}
     </button>
     <div class="dropdown-content">
-      <a
-        href="#"
+      <CartDropdownItem
         v-for="itemInCart in $store.state.cartWithQuantity"
         :key="itemInCart.product.productId"
-        >{{ itemInCart.product.name + itemInCart.quantity }}</a
-      >
-      <a v-if="this.$store.state.productsInCart < 1">Kundvagnen är tom</a>
-      <a href="#Checkout" @Click="handleCheckoutClick()" v-else>Till kassan</a>
+        :itemInCart="itemInCart"
+      />
+      <div class="footer-container">
+        <a
+          class="cart-footer"
+          v-if="this.$store.state.productsInCart.length < 1"
+          >Kundvagnen är tom</a
+        >
+        <a
+          href="#Checkout"
+          class="cart-footer"
+          @Click="handleCheckoutClick()"
+          v-else
+          >Till kassan</a
+        >
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import CartDropdownItem from "../components/CartDropdownItem.vue";
+
 export default {
+  components: {
+    CartDropdownItem,
+  },
   methods: {
     handleCheckoutClick() {
       this.$router.push({ name: "Checkout" });
+    },
+  },
+  computed: {
+    numberOfItemsInCart() {
+      return this.$store.state.productsInCart.length;
     },
   },
 };
@@ -59,22 +81,9 @@ export default {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
 }
 
 /* Show the dropdown menu on hover */
@@ -85,5 +94,22 @@ export default {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+}
+
+.cart-footer {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+a:hover {
+  background-color: #f1f1f1;
 }
 </style>
