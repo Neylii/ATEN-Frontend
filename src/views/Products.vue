@@ -305,7 +305,14 @@ export default {
       return url;
     },
   },
-  mounted() {},
+  async mounted() {
+    this.getCategories();
+    let url = "products";
+    let json = await this.$store.dispatch("apiCall", this.checkCategory(url));
+    if (json) {
+      this.filteredProducts = json;
+    }
+  },
 };
 </script>
 
