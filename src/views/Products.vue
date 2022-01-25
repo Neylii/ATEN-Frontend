@@ -198,7 +198,11 @@
           </svg>
           Tipsa en vän
         </button>
-        <button type="button" class="list-group-item list-group-item-action">
+        <button
+          type="button"
+          class="list-group-item list-group-item-action"
+          @Click="handleCheckoutClick()"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -224,7 +228,7 @@
       <div v-if="!isHidden">
         <Carousel />
       </div>
-      <div class="row justify-content-between" style="margin: 1em">
+      <div class="row justify-content-between" style="margin: auto">
         <!--Cards row 1-->
         <Product-card
           v-for="product in filteredProducts"
@@ -238,7 +242,6 @@
         </Product-card>
       </div>
     </div>
-    <div class="footer">Footer</div>
   </div>
 </template>
 
@@ -303,6 +306,9 @@ export default {
         return "consoles/" + url;
       }
       return url;
+    },
+    handleCheckoutClick() {
+      this.$router.push({ name: "Checkout" });
     },
   },
   async mounted() {
