@@ -12,7 +12,7 @@
   <nav class="navbar navbar-expand-md navbar-white bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/ATEN.png" alt="" width="30" height="24" />
+        <img src="../assets/images/ATEN.png" alt="" width="65" height="35" />
       </a>
       <button
         class="navbar-toggler"
