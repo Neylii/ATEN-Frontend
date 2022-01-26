@@ -1,5 +1,4 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from "../views/Home.vue";
 import Products from "../views/Products.vue";
 import About from "../views/About.vue";
 import CreateAccount from "../views/CreateAccount";
@@ -9,8 +8,7 @@ import Checkout from "../views/Checkout.vue";
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    redirect: "/Products",
   },
   {
     path: "/Products",

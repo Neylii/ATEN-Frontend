@@ -11,7 +11,7 @@
 
   <nav class="navbar navbar-expand-md navbar-white bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" @click="handleProductClick">
         <img src="../assets/images/ATEN.png" alt="" width="65" height="35" />
       </a>
       <button
@@ -155,6 +155,10 @@ p {
 }
 
 .navbar-nav {
+  cursor: pointer;
+}
+
+.navbar-brand {
   cursor: pointer;
 }
 
