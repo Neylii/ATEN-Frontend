@@ -93,6 +93,7 @@ export default {
 
       if (json) {
         let user = {
+          userId: json.userId,
           username: json.username,
         };
 
