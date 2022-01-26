@@ -25,7 +25,7 @@
             <a
               type="button"
               class="btn btn-primary btn-lg"
-              @click="$store.commit('addProductToCart', product)"
+              @click="$store.commit('addProductToCart', parsedProduct)"
               >Lägg i varukorg</a
             >
           </div>
