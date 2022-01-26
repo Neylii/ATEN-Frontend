@@ -85,6 +85,7 @@ export default createStore({
       try {
         let response = await fetch(apiUrl);
         if (!response.ok) {
+          console.log("Smeoth wrong");
           throw new Error("Something went wrong");
         }
         json = await response.json();
@@ -92,6 +93,10 @@ export default createStore({
         this.errorMessage = err.message;
       }
 
+      return json;
+    },
+    async checkIfUserExists({ dispatch }, user) {
+      let json = await dispatch("apiCall", `users/${user.username}`);
       return json;
     },
     /**

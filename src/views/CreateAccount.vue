@@ -151,8 +151,8 @@ export default {
           console.log(error.config);
         })
         .finally(() => {
-          // Redirects to new site. Home-page for now
-          router.push("Home");
+          // Redirects to new site.
+          router.push("Products");
         });
     },
     async submit() {

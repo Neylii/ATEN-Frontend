@@ -7,14 +7,30 @@
 <script>
 import Login from "./components/Login.vue";
 import Navbar from "./components/Navbar.vue";
+import * as utils from "@/assets/utils.js";
 
 export default {
   components: {
     Navbar,
     Login,
   },
+  methods: {
+    async doWhenMount() {
+      let username = await utils.getCookie("username");
+      if (username) {
+        let json = await this.$store.dispatch("checkIfUserExists", {
+          username: username,
+        });
+        if (!json) {
+          utils.deleteCookie("username");
+        } else {
+          this.$store.commit("updateUsernameFromCookie");
+        }
+      }
+    },
+  },
   mounted() {
-    this.$store.commit("updateUsernameFromCookie");
+    this.doWhenMount();
   },
 };
 </script>
