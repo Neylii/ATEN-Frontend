@@ -316,6 +316,7 @@ export default {
     let url = "products";
     let json = await this.$store.dispatch("apiCall", this.checkCategory(url));
     if (json) {
+      await this.$store.commit("setAllProducts", json);
       this.filteredProducts = json;
     }
   },
