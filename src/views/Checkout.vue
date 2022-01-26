@@ -24,8 +24,6 @@
           Att betala: {{ calculateTotalPrice }} kr
         </p>
       </div>
-    </div>
-    <div class="box right-box">
       <button class="btn btn-primary" @Click="handlePayClick()">Betala</button>
     </div>
   </div>
@@ -52,7 +50,7 @@ export default {
       this.$store.state.productsInCart.forEach((element) => {
         sum += element.price;
       });
-      return sum;
+      return Math.round((sum + Number.EPSILON) * 100) / 100;
     },
   },
 };
@@ -62,12 +60,14 @@ export default {
 .container {
   display: flex;
   padding: 0px;
+  justify-content: center;
 }
 
 .box {
   flex-grow: 1;
   justify-content: center;
   align-items: center;
+  max-width: 40em;
 }
 
 .left-box {
