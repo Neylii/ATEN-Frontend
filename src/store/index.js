@@ -35,7 +35,12 @@ export default createStore({
       state.loginStatus = value;
     },
     updateUserInfo(state, user) {
+      state.user.userId = user.userId;
       state.user.username = user.username;
+    },
+    emptyCart(state) {
+      state.cartWithQuantity = [];
+      state.productsInCart = [];
     },
     addProductToCart(state, product) {
       state.productsInCart.push(product);

@@ -24,7 +24,13 @@
           Att betala: {{ calculateTotalPrice }} kr
         </p>
       </div>
-      <button class="btn btn-primary" @Click="handlePayClick()">Betala</button>
+      <button
+        class="btn btn-primary"
+        @Click="handlePayClick()"
+        v-if="this.$store.state.productsInCart.length > 0"
+      >
+        Betala
+      </button>
     </div>
   </div>
 </template>
@@ -38,9 +44,10 @@ export default {
   },
   methods: {
     handlePayClick() {
-      //let userId = this.$store.state.user.userId;
-      let url = "checkout/1";
+      let userId = this.$store.state.user.userId;
+      let url = "checkout/" + userId.toString();
       this.$store.dispatch("checkoutApiCall", url);
+      this.$store.commit("emptyCart");
     },
   },
   computed: {
