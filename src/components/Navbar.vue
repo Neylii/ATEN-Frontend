@@ -11,7 +11,7 @@
 
   <nav class="navbar navbar-expand-md navbar-white bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" @click="handleProductClick">
         <img src="../assets/images/ATEN.png" alt="" width="65" height="35" />
       </a>
       <button
@@ -28,16 +28,11 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-1">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"
-              >Startsida</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#Products">Produkter</a>
+            <a class="nav-link" @click="handleProductClick">Produkter</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#About">Om oss</a>
+            <a class="nav-link" @click="handleAboutUsClick">Om oss</a>
           </li>
         </ul>
         <form class="d-flex">
@@ -105,6 +100,12 @@ export default {
   },
   name: "Navbar",
   methods: {
+    handleAboutUsClick() {
+      this.$router.push({ name: "About" });
+    },
+    handleProductClick() {
+      this.$router.push({ name: "Products" });
+    },
     handleLoginClick() {
       this.$store.commit("changeLoginScreen", true);
     },
@@ -151,6 +152,14 @@ p {
 .logged-in-user-container {
   display: flex;
   align-items: center;
+}
+
+.navbar-nav {
+  cursor: pointer;
+}
+
+.navbar-brand {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 360px) {
