@@ -1,9 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-white bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" @click="handleProductClick">
-        <img src="../assets/images/ATEN.png" alt="" width="65" height="35" />
-      </a>
+    <div class="container">
       <button
         class="navbar-toggler"
         type="button"
@@ -16,6 +13,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand" @click="handleProductClick">
+          <img src="../assets/images/ATEN.png" alt="" width="65" height="35" />
+        </a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-1">
           <li class="nav-item">
             <a class="nav-link" @click="handleProductClick">Produkter</a>
