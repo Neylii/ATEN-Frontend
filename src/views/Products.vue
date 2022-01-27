@@ -300,7 +300,7 @@ export default {
      * @author Emma Fredriksson
      */
     async handleFilter(event) {
-      this.$store.commit("updateSearchInput", "");
+      this.$store.commit("updateMessage", "");
       this.getCategories();
       let url = event.target.name;
       let json = await this.$store.dispatch("apiCall", this.checkCategory(url));
@@ -342,6 +342,7 @@ export default {
     let url = "products";
     let json = await this.$store.dispatch("apiCall", this.checkCategory(url));
     if (json) {
+      await this.$store.commit("setAllProducts", json);
       this.filteredProducts = json;
     }
   },

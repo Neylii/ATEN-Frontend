@@ -32,7 +32,6 @@ export default createStore({
     updateMessage(state, message) {
       state.search = message;
     },
-
     changeLoginScreen(state, value) {
       state.showLogin = value;
     },
