@@ -228,10 +228,27 @@
       <div v-if="!isHidden">
         <Carousel />
       </div>
-      <div class="row justify-content-between" style="margin: auto">
+      <div
+        class="row justify-content-between"
+        style="margin: auto"
+        v-if="!$store.state.search"
+      >
         <!--Cards row 1-->
         <Product-card
           v-for="product in filteredProducts"
+          :key="product.productId"
+          :productName="product.name"
+          :description="product.description"
+          :product="product"
+          :price="product.price"
+        >
+          {{ product }}
+        </Product-card>
+      </div>
+      <div class="row justify-content-between" style="margin: auto" v-else>
+        <!--Cards row 1-->
+        <Product-card
+          v-for="product in filteredList"
           :key="product.productId"
           :productName="product.name"
           :description="product.description"
@@ -248,7 +265,6 @@
 <script>
 import ProductCard from "../components/ProductCard.vue";
 import Carousel from "../components/Carousel.vue";
-
 export default {
   components: {
     ProductCard,
@@ -284,6 +300,7 @@ export default {
      * @author Emma Fredriksson
      */
     async handleFilter(event) {
+      //this.$store.commit("updateSearchInput", "");
       this.getCategories();
       let url = event.target.name;
       let json = await this.$store.dispatch("apiCall", this.checkCategory(url));
@@ -309,6 +326,15 @@ export default {
     },
     handleCheckoutClick() {
       this.$router.push({ name: "Checkout" });
+    },
+  },
+  computed: {
+    filteredList() {
+      return this.$store.state.allProducts.filter((product) => {
+        return product.name
+          .toLowerCase()
+          .includes(this.$store.state.search.toLowerCase());
+      });
     },
   },
   async mounted() {

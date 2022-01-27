@@ -9,6 +9,7 @@ export default createStore({
     allProducts: [],
     showLogin: false,
     loginStatus: false,
+    search: "",
     user: {
       userId: Number,
       username: String,
@@ -28,6 +29,10 @@ export default createStore({
     setAllProducts(state, listOfProducts) {
       state.allProducts = listOfProducts;
     },
+    updateMessage(state, message) {
+      state.search = message;
+    },
+
     changeLoginScreen(state, value) {
       state.showLogin = value;
     },
