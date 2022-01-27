@@ -1,14 +1,4 @@
 <template>
-  <!--
-  <div class="navbar">
-    <ul>
-      <li><a href="#">Hem</a></li>
-      <li><a href="#Products">Produkter</a></li>
-      <li><a href="#About">Om oss</a></li>
-      <li><a href="#CreateAccount">Skapa konto</a></li>
-    </ul>
-  </div>-->
-
   <nav class="navbar navbar-expand-md navbar-white bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" @click="handleProductClick">
@@ -35,16 +25,15 @@
             <a class="nav-link" @click="handleAboutUsClick">Om oss</a>
           </li>
         </ul>
+
         <form class="d-flex">
           <input
             class="form-control mx-1"
             type="search"
             placeholder="Search"
             aria-label="Search"
+            v-model="message"
           />
-          <button class="btn btn-outline-success mx-1" type="submit">
-            Search
-          </button>
         </form>
       </div>
 
@@ -112,6 +101,19 @@ export default {
     handleLogoutClick() {
       utils.deleteCookie("username");
       this.$store.commit("changeLoginStatus", false);
+    },
+  },
+  /**
+   * the message function checks the search state and returns the updated search value.
+   */
+  computed: {
+    message: {
+      get() {
+        return this.$store.state.search;
+      },
+      set(value) {
+        this.$store.commit("updateMessage", value);
+      },
     },
   },
 };
