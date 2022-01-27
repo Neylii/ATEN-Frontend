@@ -26,7 +26,7 @@
           </li>
         </ul>
 
-        <form class="d-flex">
+        <form class="d-flex" v-if="$route.name === 'Products'">
           <input
             class="form-control mx-1"
             type="search"
