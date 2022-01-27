@@ -244,8 +244,6 @@
         >
           {{ product }}
         </Product-card>
-      </div>
-      <div class="row justify-content-between" style="margin: auto" v-else>
         <!--Cards row 1-->
         <Product-card
           v-for="product in filteredList"
@@ -258,6 +256,11 @@
           {{ product }}
         </Product-card>
       </div>
+      <div
+        class="row justify-content-between"
+        style="margin: auto"
+        v-else
+      ></div>
     </div>
   </div>
 </template>
